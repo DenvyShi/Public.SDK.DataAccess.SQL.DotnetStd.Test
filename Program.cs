@@ -27,8 +27,6 @@ namespace Public.SDK.DataAccess.SQL.DotnetStd.Test
                 _logger.Debug("Program started");
                 TestMsSQL();
                 TestMySQL();
-                //ManualResetEventSlim manualReset = new ManualResetEventSlim();
-                //manualReset.Wait();
             }
             catch (Exception e)
             {
@@ -43,8 +41,8 @@ namespace Public.SDK.DataAccess.SQL.DotnetStd.Test
             _logger.Debug($"Begin to TestMySQL");
             string myConnectionString;
 
-            myConnectionString = "server=linux.hksl.com.hk;uid=root;" +
-                                 "pwd=hksl2628;database=sandbox";
+            myConnectionString = "server=127.0.0.1;uid=root;" +
+                                 "pwd=p@ssw0rd;database=sandbox";
             using (Public.SDK.Database.MySQLDB db = new MySQLDB(myConnectionString))
             {
                 string sql = "SELECT * FROM sandbox.Staffs";
@@ -65,7 +63,7 @@ namespace Public.SDK.DataAccess.SQL.DotnetStd.Test
         private static void TestMsSQL()
         {
             _logger.Debug($"Begin to Test Ms SQL");
-            using (Public.SDK.Database.MSSQLDB db = new MSSQLDB("Server=10.26.0.245;Database=TLogger;User Id=sa;Password=hksl@2628;"))
+            using (Public.SDK.Database.MSSQLDB db = new MSSQLDB("Server=127.0.0.1;Database=Test;User Id=sa;Password=p@ssw0rd;"))
             {
                 string sql = @"SELECT [sensorid]
       ,[macaddress]
